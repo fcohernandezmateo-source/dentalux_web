@@ -45,7 +45,7 @@ export default function Contacto() {
     {
       icon: Clock,
       title: "Horario",
-      lines: ["Lun - Vie: 9:00 - 20:00", "Sáb: 9:00 - 14:00"]
+      lines: ["Lun - Jue:","Mañanas 10:00 - 13:30","Tardes 16:00 - 20:30", "Vie: 10:00 - 13:30"]
     }
   ];
 
