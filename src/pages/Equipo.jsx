@@ -31,14 +31,14 @@ export default function Equipo() {
     },
     {
       name: "Miriam Santos",
-      role: "Auxiliar",
+      role: "Administrativa y Auxiliar",
       specialty: "Asistencia Clínica",
       image: fotoMiriam,
       description: "Auxiliar de clínica, garantizando el correcto funcionamiento de nuestros tratamientos."
     },
     {
       name: "Nuria Martín",
-      role: "Auxiliar",
+      role: "Higienista Dental",
       specialty: "Asistencia Clínica",
       image: fotoNuria,
       description: "Auxiliar de clínica, comprometida con la excelencia en la atención al paciente."
