@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from: 'DentalLux <info@send.dentalux.es>',
+      from: 'DentalLux <info@dentalux.es>',
       to: ['info@dentalux.es'],
       subject: `Consulta Web: ${service} - ${name}`,
       html: `
