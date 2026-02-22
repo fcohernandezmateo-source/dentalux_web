@@ -22,7 +22,7 @@ export default function Contacto() {
     setLoading(true);
     
     try {
-      const response = await fetch('/api/send-email', {
+      const response = await fetch('/api/contacto', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData), // Enviamos el estado directamente
