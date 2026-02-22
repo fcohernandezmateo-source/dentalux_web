@@ -20,10 +20,25 @@ export default function Contacto() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setSubmitted(true);
-    setLoading(false);
+    
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData), // Enviamos el estado directamente
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        alert('Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+      }
+    } catch (error) {
+      console.error("Error enviando el formulario:", error);
+      alert('Error de conexión. Revisa tu internet e inténtalo de nuevo.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -111,7 +126,7 @@ export default function Contacto() {
                 <div className="relative">
                   <div className="aspect-video bg-gray-100 overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3174.2!2d-6.8!3d37.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDE4JzAwLjAiTiA2wrA0OCcwMC4wIlc!5e0!3m2!1ses!2ses!4v1620000000000!5m2!1ses!2ses"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3175.056461427506!2d-6.729112223450915!3d37.30560207210874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd1185012351663f%3A0x867332c8c4f3a76e!2sC.%20Torre%20del%20Loro%2C%2016%2C%2021820%20Lucena%20del%20Puerto%2C%20Huelva!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses"
                       width="100%"
                       height="100%"
                       style={{ border: 0, filter: 'grayscale(100%)' }}
@@ -152,6 +167,12 @@ export default function Contacto() {
                     <p className="text-gray-500 font-light">
                       Gracias por contactarnos. Te responderemos lo antes posible.
                     </p>
+                    <Button 
+                      onClick={() => setSubmitted(false)}
+                      className="mt-6 variant-outline bg-transparent border border-black text-black hover:bg-black hover:text-white transition-colors"
+                    >
+                      Enviar otro mensaje
+                    </Button>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
