@@ -55,7 +55,7 @@ export default function Contacto() {
     {
       icon: Mail,
       title: "Email",
-      lines: ["info@dentalux.es", "citas@dentalux.es"]
+      lines: ["info@dentalux.es"]
     },
     {
       icon: Clock,
@@ -190,21 +190,28 @@ export default function Contacto() {
                         <label className="block text-sm text-gray-600 mb-2">Teléfono</label>
                         <Input
                           type="tel"
+                          inputMode="numeric" // Abre el teclado numérico en móviles
                           value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          onChange={(e) => {
+                            // Solo permite números (bloquea letras al escribir)
+                            const value = e.target.value.replace(/\D/g, "");
+                            setFormData({ ...formData, phone: value });
+                          }}
+                          placeholder="Ej: 600000000"
                           className="border-gray-200 focus:border-black rounded-none h-12 bg-white"
-                          required
+                          required // Este suele ser mejor dejarlo obligatorio para poder llamar al paciente
                         />
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm text-gray-600 mb-2">Email</label>
+                      <label className="block text-sm text-gray-600 mb-2">Email (Opcional)</label>
                       <Input
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder="ejemplo@correo.com"
                         className="border-gray-200 focus:border-black rounded-none h-12 bg-white"
-                        required
+                        // Hemos quitado 'required' para que sea opcional
                       />
                     </div>
                     <div>
