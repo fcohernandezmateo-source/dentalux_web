@@ -2,8 +2,7 @@ const { Resend } = require('resend');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export default async function handler(req, res) {
-  // Solo permitimos peticiones POST
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Método no permitido' });
   }
@@ -12,8 +11,8 @@ export default async function handler(req, res) {
 
   try {
     const data = await resend.emails.send({
-      from: 'DentalLux <info@send.dentalux.es>', // Tu dominio verificado
-      to: ['info@dentalux.es'], // Tu correo donde recibirás el aviso
+      from: 'DentalLux <info@send.dentalux.es>',
+      to: ['info@dentalux.es'],
       subject: `Consulta Web: ${service} - ${name}`,
       html: `
         <h2>Nueva solicitud de cita desde la web</h2>
@@ -27,7 +26,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ success: true, data });
   } catch (error) {
-    console.error(error);
+    console.error('Error en Resend:', error);
     return res.status(500).json({ error: error.message });
   }
-}
+};
