@@ -269,4 +269,4 @@ export default function Tratamientos() {
   );
 }
 
-import { createPageUrl } from '@/utils';
+import { createPageUrl } from '../utils';

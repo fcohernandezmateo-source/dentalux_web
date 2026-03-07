@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
+import { createPageUrl } from '../utils';
 import { ChevronRight, Sparkles, Heart, Bone, Apple, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import logo from '../assets/img/logo.png';

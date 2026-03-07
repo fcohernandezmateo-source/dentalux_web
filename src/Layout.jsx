@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { createPageUrl } from '@/utils';
+import { createPageUrl } from './utils';
 import { Menu, X, Phone, Mail, Instagram, Facebook, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import CookieConsent from '@/components/CookieConsent';
+import CookieConsent from './components/CookieConsent';
 import logo from './assets/img/logo2.png'; 
 import logoPie from './assets/img/logopie.png'; 
 
