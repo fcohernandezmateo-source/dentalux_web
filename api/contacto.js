@@ -13,6 +13,7 @@ export default async function handler(req, res) {
     await resend.emails.send({
       from: 'DentalLux <info@dentalux.es>',
       to: ['info@dentalux.es'],
+      reply_to: email,
       subject: `Consulta Web: ${service} - ${name}`,
       html: `
         <h2>Nueva solicitud de cita</h2>
